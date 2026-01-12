@@ -1,0 +1,63 @@
+[project]
+name = "cowork-sidecar"
+version = "0.1.0"
+description = "AI agent engine for Cowork desktop app"
+requires-python = ">=3.11"
+readme = "README.md"
+license = { text = "MIT" }
+
+dependencies = [
+    "pydantic>=2.0,<3.0",
+    "anthropic>=0.40.0",
+    "openai>=1.50.0",
+    "aiosqlite>=0.20.0",
+    "tomli>=2.0.0;python_version<'3.11'",
+    "tomli-w>=1.0.0",
+]
+
+[project.optional-dependencies]
+parsers = [
+    "pypdf>=4.0.0",
+    "python-docx>=1.1.0",
+    "openpyxl>=3.1.0",
+    "pandas>=2.2.0",
+]
+generators = [
+    "python-docx>=1.1.0",
+    "openpyxl>=3.1.0",
+    "reportlab>=4.0.0",
+]
+search = [
+    "chromadb>=0.5.0",
+    "sentence-transformers>=3.0.0",
+]
+ocr = [
+    "pytesseract>=0.3.10",
+    "Pillow>=10.0.0",
+]
+all = [
+    "cowork-sidecar[parsers,generators,search,ocr]",
+]
+dev = [
+    "pytest>=8.0.0",
+    "pytest-asyncio>=0.24.0",
+    "ruff>=0.5.0",
+]
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.hatch.build.targets.wheel]
+packages = ["cowork"]
+
+[tool.ruff]
+target-version = "py311"
+line-length = 100
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "N", "W", "UP", "B", "SIM"]
+
+[tool.pytest.ini_options]
+asyncio_mode = "auto"
+testpaths = ["tests"]
