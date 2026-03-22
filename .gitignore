@@ -1,0 +1,52 @@
+# ========================
+# Cowork .gitignore
+# ========================
+
+# --- OS ---
+.DS_Store
+Thumbs.db
+Desktop.ini
+
+# --- IDEs ---
+.vscode/
+!.vscode/settings.json
+!.vscode/extensions.json
+.idea/
+*.swp
+*.swo
+*~
+
+# --- Node / Electron ---
+node_modules/
+app/node_modules/
+app/dist/
+app/out/
+*.tsbuildinfo
+
+# --- Python ---
+__pycache__/
+*.py[cod]
+*$py.class
+*.egg-info/
+*.egg
+dist/
+build/
+sidecar/.venv/
+sidecar/.pytest_cache/
+sidecar/cowork.log
+.ruff_cache/
+
+# --- Vite ---
+src/.vite/
+
+# --- Logs ---
+*.log
+logs/
+
+# --- Environment / Secrets ---
+.env
+.env.local
+.env.*.local
+
+# --- Cowork user data (never commit) ---
+# Config with API keys lives at ~/.cowork/
